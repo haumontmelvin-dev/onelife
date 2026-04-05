@@ -36,7 +36,18 @@
       min-height: 100vh;
       letter-spacing: 0.01em;
     }
-
+    
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(rgba(6, 10, 15, 0.72), rgba(5, 7, 11, 0.90)),
+        url('https://images6.alphacoders.com/910/thumb-1920-910972.png') center/cover;
+      opacity: 0.18;
+      pointer-events: none;
+      z-index: -3;
+    }
     body::after {
       content: "";
       position: fixed;
