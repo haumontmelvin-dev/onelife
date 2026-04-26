@@ -1933,6 +1933,250 @@
       }
     }
 
+
+    /* AMÉLIORATIONS FINALES DEMANDÉES */
+    #regles-cite .law-grid,
+    #regles-serveur .law-grid {
+      counter-reset: blocRegle;
+    }
+
+    #regles-cite .law-grid > .law-card,
+    #regles-serveur .law-grid > .law-card {
+      counter-increment: blocRegle;
+    }
+
+    #regles-cite .law-grid > .law-card > h3,
+    #regles-serveur .law-grid > .law-card > h3 {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(88,214,255,0.10);
+    }
+
+    #regles-cite .law-grid > .law-card > h3::before,
+    #regles-serveur .law-grid > .law-card > h3::before {
+      content: counter(blocRegle, decimal-leading-zero);
+      display: inline-grid;
+      place-items: center;
+      min-width: 42px;
+      height: 30px;
+      padding: 0 10px;
+      border-radius: 999px;
+      color: #071018;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 22px rgba(88,214,255,0.20);
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      flex: 0 0 auto;
+    }
+
+      border-color: rgba(255,176,76,0.22);
+      color: #ffd29a;
+      background: rgba(255,176,76,0.055);
+    }
+
+      border-color: rgba(255,176,76,0.42);
+      background: rgba(255,176,76,0.11);
+      box-shadow: 0 0 22px rgba(255,176,76,0.11);
+    }
+
+    .connection-heading {
+      position: relative;
+      z-index: 1;
+      margin-top: 24px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(88,214,255,0.13);
+      background: rgba(255,255,255,0.025);
+      box-shadow: inset 0 0 22px rgba(88,214,255,0.025);
+    }
+
+    .connection-heading strong {
+      display: block;
+      color: var(--accent-2);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.86rem;
+      margin-bottom: 6px;
+    }
+
+    .connection-heading span {
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 0.92rem;
+    }
+
+    .footer-card {
+      border-top: 1px solid rgba(88,214,255,0.18);
+      box-shadow: 0 -18px 60px rgba(88,214,255,0.045), var(--shadow);
+    }
+
+    .footer-card::after {
+      content: "";
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      top: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(88,214,255,0.62), transparent);
+      pointer-events: none;
+    }
+
+  
+    /* MASTER FINAL - finition visuelle propre */
+
+    .section-header h2,
+    .hero h1 { position: relative; display: inline-block; }
+
+    .section-header h2::after,
+    .hero h1::after {
+      content: ""; display: block; width: min(240px, 72%); height: 2px; margin-top: 12px; border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), rgba(88,214,255,0.12), transparent);
+      box-shadow: 0 0 18px rgba(88,214,255,0.28);
+    }
+
+    #regles-cite .section-header h2,
+    #regles-serveur .section-header h2,
+    #histoire .section-header h2,
+    #discord .section-header h2 { text-shadow: 0 0 20px rgba(88,214,255,0.14); }
+
+    #regles-cite .section-header h2::before,
+    #regles-serveur .section-header h2::before,
+    #histoire .section-header h2::before,
+    #discord .section-header h2::before {
+      content: "▌"; color: var(--accent); margin-right: 10px; text-shadow: 0 0 18px rgba(88,214,255,0.70);
+      animation: terminalBlink 1.35s steps(2, end) infinite;
+    }
+
+    .law-card, .timeline-card, .discord-card, .panel { isolation: isolate; }
+
+    .law-card::before, .timeline-card::before, .discord-card::before, .panel::before {
+      box-shadow: inset 0 0 32px rgba(88,214,255,0.018);
+    }
+
+    .law-card:hover, .timeline-card:hover, .discord-card:hover, .panel:hover { filter: saturate(1.04); }
+
+    #regles-cite .law-grid > .law-card > h3,
+    #regles-serveur .law-grid > .law-card > h3 {
+      border-bottom: 1px solid rgba(88,214,255,0.16) !important;
+      background: linear-gradient(90deg, rgba(88,214,255,0.035), transparent 70%);
+      margin: -6px -6px 14px; padding: 12px 10px 12px !important; border-radius: 12px;
+    }
+
+    #regles-cite .law-grid > .law-card > h3::before,
+    #regles-serveur .law-grid > .law-card > h3::before {
+      color: #061019 !important; font-weight: 950; border: 1px solid rgba(255,255,255,0.22);
+      box-shadow: 0 0 20px rgba(88,214,255,0.26), inset 0 0 10px rgba(255,255,255,0.18) !important;
+    }
+
+    .timeline-card { border-left: 3px solid rgba(88,214,255,0.24); }
+    .timeline-card strong::before { content: "// "; color: var(--accent); text-shadow: 0 0 14px rgba(88,214,255,0.48); }
+
+    .visible-summary { position: relative; overflow: hidden; }
+    .visible-summary::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(110deg, transparent 0%, rgba(88,214,255,0.07) 45%, transparent 58%);
+      transform: translateX(-120%); animation: masterSummarySweep 8s ease-in-out infinite; pointer-events: none;
+    }
+
+    .summary-chip { position: relative; z-index: 1; }
+    .summary-chip:hover { color: #061019; background: linear-gradient(135deg, var(--accent), var(--accent-2)); border-color: transparent; }
+
+    .connection-heading {
+      border-color: rgba(88,214,255,0.20) !important;
+      background: linear-gradient(135deg, rgba(88,214,255,0.075), rgba(255,255,255,0.02)), rgba(5,8,12,0.36) !important;
+    }
+
+    .connection-step { position: relative; overflow: hidden; transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease; }
+    .connection-step:hover { transform: translateY(-2px); border-color: rgba(88,214,255,0.28); box-shadow: 0 18px 42px rgba(0,0,0,0.24), 0 0 26px rgba(88,214,255,0.08); }
+
+    .btn-primary, .nav-cta { box-shadow: 0 12px 28px rgba(88,214,255,0.22), 0 0 22px rgba(88,214,255,0.10) !important; }
+    .btn-workshop, .boutique-nav-btn { animation: redSignalPulse 3.6s ease-in-out infinite; }
+
+    .footer-card { position: relative; overflow: hidden; border-top: 1px solid rgba(88,214,255,0.20); }
+    .footer-card::after {
+      content: "SECTEUR C17 AUTORISÉ"; position: absolute; right: 18px; bottom: 8px; color: rgba(167,236,255,0.12);
+      font-size: 0.72rem; font-weight: 900; letter-spacing: 0.18em; text-transform: uppercase; pointer-events: none;
+    }
+    .footer-card::before { box-shadow: inset 0 0 34px rgba(88,214,255,0.03); }
+
+    .back-top-btn { left: auto !important; right: 22px !important; bottom: 22px !important; }
+    .camera-status { left: 22px !important; right: auto !important; bottom: 22px !important; }
+
+    @keyframes terminalBlink { 0%, 48% { opacity: 1; } 49%, 100% { opacity: 0.34; } }
+    @keyframes masterSummarySweep { 0%, 72% { transform: translateX(-120%); opacity: 0; } 80% { opacity: 0.75; } 100% { transform: translateX(120%); opacity: 0; } }
+    @keyframes redSignalPulse { 0%, 100% { box-shadow: 0 0 18px rgba(255,45,45,0.11); } 50% { box-shadow: 0 0 28px rgba(255,45,45,0.24); } }
+
+
+    /* PERTE DE SIGNAL DISCRÈTE */
+    .signal-glitch {
+      position: fixed;
+      inset: 0;
+      z-index: 96;
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+      background:
+        repeating-linear-gradient(180deg, rgba(255,255,255,0.10) 0px, rgba(255,255,255,0.10) 1px, transparent 2px, transparent 5px),
+        linear-gradient(90deg, transparent 0%, rgba(88,214,255,0.10) 48%, rgba(255,80,80,0.08) 52%, transparent 100%);
+      mix-blend-mode: screen;
+      filter: contrast(1.25);
+    }
+
+    .signal-glitch::before,
+    .signal-glitch::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, transparent, rgba(255,255,255,0.10), transparent),
+        repeating-linear-gradient(0deg, transparent 0px, transparent 8px, rgba(255,255,255,0.07) 9px, transparent 10px);
+      opacity: 0.55;
+      transform: translateX(-2px);
+    }
+
+    .signal-glitch::after {
+      opacity: 0.35;
+      transform: translateX(2px);
+      background:
+        radial-gradient(circle at 20% 40%, rgba(255,255,255,0.20), transparent 2px),
+        radial-gradient(circle at 70% 30%, rgba(88,214,255,0.18), transparent 2px),
+        radial-gradient(circle at 50% 80%, rgba(255,80,80,0.12), transparent 2px);
+      background-size: 36px 36px, 52px 52px, 74px 74px;
+    }
+
+    .signal-glitch.is-active {
+      visibility: visible;
+      animation: signalGlitch 1.35s steps(7, end) both;
+    }
+
+    body.signal-shake .site-header,
+    body.signal-shake main,
+    body.signal-shake .footer {
+      animation: signalShake 1.35s steps(8, end) both;
+    }
+
+    @keyframes signalGlitch {
+      0% { opacity: 0; transform: translateX(0); }
+      8% { opacity: 0.36; transform: translateX(-2px); }
+      18% { opacity: 0.16; transform: translateX(3px); }
+      31% { opacity: 0.44; transform: translateX(-1px); }
+      46% { opacity: 0.08; transform: translateX(2px); }
+      62% { opacity: 0.30; transform: translateX(-3px); }
+      78% { opacity: 0.18; transform: translateX(1px); }
+      100% { opacity: 0; transform: translateX(0); visibility: hidden; }
+    }
+
+    @keyframes signalShake {
+      0%, 100% { transform: translateX(0); filter: none; }
+      18% { transform: translateX(-1px); filter: saturate(1.18); }
+      34% { transform: translateX(1px); filter: contrast(1.08); }
+      58% { transform: translateX(-1px); filter: saturate(0.92); }
+      76% { transform: translateX(1px); filter: none; }
+    }
+
+
   </style>
 </head>
 <body class="intro-lock">
@@ -1962,6 +2206,7 @@
   <div class="cinematic-noise" aria-hidden="true"></div>
   <div id="cinematicBars" class="cinematic-bars" aria-hidden="true"></div>
   <div id="cinematicAlert" class="cinematic-alert" aria-live="polite">Contrôle de secteur en cours</div>
+  <div id="signalGlitch" class="signal-glitch" aria-hidden="true"></div>
 
   <div class="dispatch-strip" aria-label="Statut du secteur">
     <div class="dispatch-inner">
@@ -2042,7 +2287,7 @@
             <a class="btn btn-primary" href="steam://connect/164.132.206.223:27015">Rejoindre le serveur</a>
             <a class="btn btn-secondary" href="https://discord.gg/kpkrKFGxrS" target="_blank" rel="noopener noreferrer">Discord principal</a>
             <a class="btn btn-secondary" href="https://discord.gg/DgvfnvmGdA" target="_blank" rel="noopener noreferrer">Demande de déban</a>
-            <a class="btn btn-workshop" href="https://steamcommunity.com/sharedfiles/filedetails/?id=1546165665" target="_blank" rel="noopener noreferrer">Workshop</a>
+            <a class="btn btn-workshop" href="https://steamcommunity.com/sharedfiles/filedetails/?id=1546165665" target="_blank" rel="noopener noreferrer">Workshop Serveur</a>
           </div>
           <p class="workshop-help">Pensez à vous abonner au Workshop avant de rejoindre le serveur.</p>
 
@@ -2061,6 +2306,10 @@
             </div>
           </div>
 
+          <div class="connection-heading">
+            <strong>Avant de jouer</strong>
+            <span>Suivez ces étapes pour entrer en Cité 17 sans erreur de contenu.</span>
+          </div>
           <div class="connection-steps">
             <div class="connection-step"><strong>1. Workshop</strong><span>Abonnez-vous au contenu avant de rejoindre.</span></div>
             <div class="connection-step"><strong>2. Discord</strong><span>Suivez les annonces et contactez le staff.</span></div>
@@ -2830,6 +3079,32 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     }
+
+
+    const signalGlitch = document.getElementById('signalGlitch');
+
+    function lancerPerteSignal() {
+      if (!signalGlitch || document.body.classList.contains('intro-lock')) return;
+      signalGlitch.classList.remove('is-active');
+      void signalGlitch.offsetWidth;
+      signalGlitch.classList.add('is-active');
+      document.body.classList.add('signal-shake');
+      setTimeout(() => {
+        signalGlitch.classList.remove('is-active');
+        document.body.classList.remove('signal-shake');
+      }, 1400);
+    }
+
+    function planifierPerteSignal() {
+      const delai = 52000 + Math.floor(Math.random() * 18000);
+      setTimeout(() => {
+        lancerPerteSignal();
+        planifierPerteSignal();
+      }, delai);
+    }
+
+    setTimeout(planifierPerteSignal, 12000);
+
 
     function copyIP() {
       const ip = document.getElementById('serverAddress').innerText.trim();
