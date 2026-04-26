@@ -1334,6 +1334,134 @@
       }
     }
 
+  
+
+    /* CORRECTION FINALE BARRE DU HAUT - compacte et entièrement cliquable */
+    .site-header {
+      overflow: visible;
+    }
+
+    .nav {
+      display: grid !important;
+      grid-template-columns: auto minmax(360px, 1fr) auto !important;
+      align-items: center !important;
+      gap: 14px !important;
+      min-height: 70px !important;
+      padding: 8px 0 !important;
+    }
+
+    .brand {
+      min-width: 0;
+      white-space: nowrap;
+    }
+
+    .brand-badge {
+      width: 50px !important;
+      height: 50px !important;
+    }
+
+    .nav-links {
+      display: flex !important;
+      flex-wrap: nowrap !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 7px !important;
+      min-height: 44px !important;
+      overflow: visible !important;
+      position: relative !important;
+      z-index: 60 !important;
+    }
+
+    .nav-links .sector-link {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      height: 40px !important;
+      min-height: 40px !important;
+      padding: 0 11px !important;
+      line-height: 1 !important;
+      white-space: nowrap !important;
+      font-size: 0.76rem !important;
+      letter-spacing: 0.04em !important;
+      border-radius: 999px !important;
+      position: relative !important;
+      z-index: 65 !important;
+      pointer-events: auto !important;
+    }
+
+    .nav-actions {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: flex-end !important;
+      gap: 8px !important;
+      min-height: 44px !important;
+      position: relative !important;
+      z-index: 70 !important;
+      flex-wrap: nowrap !important;
+    }
+
+    .boutique-nav-btn,
+    .nav-cta {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      height: 40px !important;
+      min-height: 40px !important;
+      padding: 0 13px !important;
+      line-height: 1 !important;
+      white-space: nowrap !important;
+      font-size: 0.76rem !important;
+      letter-spacing: 0.045em !important;
+      border-radius: 999px !important;
+      position: relative !important;
+      z-index: 75 !important;
+      pointer-events: auto !important;
+    }
+
+    .boutique-nav-btn {
+      color: #ffd6d6 !important;
+      border: 1px solid rgba(255, 80, 80, 0.42) !important;
+      background: rgba(165, 22, 28, 0.18) !important;
+      box-shadow: 0 0 18px rgba(255, 45, 45, 0.12) !important;
+      cursor: pointer !important;
+    }
+
+    .boutique-nav-btn:hover,
+    .boutique-nav-btn:focus-visible {
+      color: #ffffff !important;
+      background: rgba(210, 35, 42, 0.30) !important;
+      border-color: rgba(255, 115, 115, 0.72) !important;
+      box-shadow: 0 0 26px rgba(255, 55, 55, 0.22) !important;
+      outline: none !important;
+    }
+
+    .boutique-nav-btn::before,
+    .boutique-nav-btn::after,
+    .nav-links .sector-link::before,
+    .nav-links .sector-link::after,
+    .nav-cta::before,
+    .nav-cta::after {
+      pointer-events: none !important;
+    }
+
+    .nav-cta {
+      min-width: auto !important;
+      box-shadow: 0 10px 22px rgba(88, 214, 255, 0.18) !important;
+    }
+
+    @media (max-width: 1100px) {
+      .nav {
+        grid-template-columns: 1fr !important;
+        align-items: stretch !important;
+      }
+
+      .nav-links,
+      .nav-actions {
+        justify-content: flex-start !important;
+        flex-wrap: wrap !important;
+      }
+    }
+
   </style>
 </head>
 <body class="intro-lock">
@@ -1399,14 +1527,14 @@
 
       <nav class="nav-links" aria-label="Navigation des secteurs">
         <button class="sector-link is-active" type="button" data-sector="accueil">Accueil</button>
-        <button class="sector-link" type="button" data-sector="regles-cite">Règles de la cité</button>
-        <button class="sector-link" type="button" data-sector="regles-serveur">Règles serveur</button>
+        <button class="sector-link" type="button" data-sector="regles-cite">Lois C17</button>
+        <button class="sector-link" type="button" data-sector="regles-serveur">Règlement</button>
         <button class="sector-link" type="button" data-sector="histoire">Histoire</button>
       </nav>
 
       <div class="nav-actions">
         <button class="boutique-nav-btn" type="button" data-boutique-open>Boutique</button>
-        <a class="nav-cta" href="https://discord.gg/kpkrKFGxrS" target="_blank" rel="noopener noreferrer">Rejoindre le Discord</a>
+        <a class="nav-cta" href="https://discord.gg/kpkrKFGxrS" target="_blank" rel="noopener noreferrer">Discord</a>
       </div>
     </div>
   </header>
@@ -1482,9 +1610,6 @@
               <div class="check-item"><i>✓</i><span>Univers inspiré directement de <strong>Half-Life 2</strong> et de l'oppression de Cité 17.</span></div>
               <div class="check-item"><i>✓</i><span>Hiérarchie claire entre Citoyens, Métropolice, Combine, factions civiles et résistance.</span></div>
               <div class="check-item"><i>✓</i><span>Serveur pensé pour un <strong>HL2RP sérieux</strong>, immersif et durable.</span></div>
-            </div>
-            <div class="hero-actions" style="margin-top:18px;">
-              <a class="btn btn-secondary" href="https://www.gametracker.com/server_info/164.132.206.223:27015/" target="_blank" rel="noopener noreferrer">Voir GameTracker</a>
             </div>
             <div class="law-card" style="margin-top:18px;padding:16px;">
               <h3 style="margin-bottom:10px;">Joueurs en ligne</h3>
@@ -1932,8 +2057,8 @@
       <span>© OneLife — HL2RP • <strong>Créé par Polia</strong></span>
       <div class="footer-links">
         <button class="footer-sector-link" type="button" data-sector="accueil">Accueil</button>
-        <button class="footer-sector-link" type="button" data-sector="regles-cite">Règles de la cité</button>
-        <button class="footer-sector-link" type="button" data-sector="regles-serveur">Règles serveur</button>
+        <button class="footer-sector-link" type="button" data-sector="regles-cite">Lois C17</button>
+        <button class="footer-sector-link" type="button" data-sector="regles-serveur">Règlement</button>
         <button class="footer-sector-link" type="button" data-sector="histoire">Histoire</button>
       </div>
     </div>
