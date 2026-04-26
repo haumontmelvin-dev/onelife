@@ -1684,6 +1684,255 @@
       .camera-status { display: none; }
     }
 
+
+    /* COUCHE CINÉMATIQUE CITY 17 */
+    .cinematic-vignette {
+      position: fixed;
+      inset: 0;
+      z-index: 7;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at center, transparent 0%, transparent 48%, rgba(0,0,0,0.38) 100%),
+        linear-gradient(180deg, rgba(0,0,0,0.16), transparent 24%, transparent 76%, rgba(0,0,0,0.22));
+      opacity: 0.72;
+      mix-blend-mode: multiply;
+    }
+
+    .cinematic-noise {
+      position: fixed;
+      inset: 0;
+      z-index: 8;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.035) 0 1px, transparent 1px),
+        radial-gradient(circle at 80% 60%, rgba(88,214,255,0.026) 0 1px, transparent 1px),
+        radial-gradient(circle at 45% 80%, rgba(255,255,255,0.022) 0 1px, transparent 1px);
+      background-size: 41px 41px, 67px 67px, 89px 89px;
+      opacity: 0.18;
+      animation: noiseDrift 7s steps(3, end) infinite;
+    }
+
+    .cinematic-bars {
+      position: fixed;
+      inset: 0;
+      z-index: 9;
+      pointer-events: none;
+    }
+
+    .cinematic-bars::before,
+    .cinematic-bars::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 0;
+      background: rgba(0,0,0,0.48);
+      transition: height 0.42s ease;
+    }
+
+    .cinematic-bars::before { top: 0; }
+    .cinematic-bars::after { bottom: 0; }
+    .cinematic-bars.is-active::before,
+    .cinematic-bars.is-active::after { height: 42px; }
+
+    .cinematic-alert {
+      position: fixed;
+      top: 116px;
+      left: 50%;
+      z-index: 95;
+      width: min(640px, calc(100% - 34px));
+      transform: translateX(-50%) translateY(-14px) scale(0.98);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      padding: 14px 18px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,80,80,0.38);
+      background: linear-gradient(135deg, rgba(23,7,9,0.88), rgba(8,13,18,0.82));
+      box-shadow: 0 0 42px rgba(255,70,70,0.18), 0 22px 55px rgba(0,0,0,0.58);
+      color: #ffd7d7;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      font-weight: 900;
+      text-align: center;
+      backdrop-filter: blur(9px);
+      transition: opacity 0.22s ease, visibility 0.22s ease, transform 0.22s ease;
+    }
+
+    .cinematic-alert::before {
+      content: "●";
+      margin-right: 10px;
+      color: #ff4d4d;
+      text-shadow: 0 0 18px rgba(255,77,77,0.95);
+      animation: recPulse 1s ease-in-out infinite;
+    }
+
+    .cinematic-alert.is-visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0) scale(1);
+    }
+
+    .dispatch-strip.alert-flash {
+      border-bottom-color: rgba(255,80,80,0.36);
+      box-shadow: 0 8px 26px rgba(0,0,0,0.34), 0 0 28px rgba(255,70,70,0.16);
+    }
+
+    .site-header::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(88,214,255,0.9), transparent);
+      transform: translateX(-100%);
+      animation: headerSignal 7s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .hero-card::before,
+    .panel::before,
+    .law-card::before,
+    .timeline-card::before,
+    .discord-card::before {
+      box-shadow: inset 0 0 32px rgba(88,214,255,0.018);
+    }
+
+    .btn-workshop,
+    .nav-boutique-btn {
+      animation: redSignal 3.6s ease-in-out infinite;
+    }
+
+    @keyframes noiseDrift {
+      0% { transform: translate(0, 0); }
+      33% { transform: translate(7px, -5px); }
+      66% { transform: translate(-4px, 6px); }
+      100% { transform: translate(0, 0); }
+    }
+
+    @keyframes headerSignal {
+      0%, 58% { transform: translateX(-100%); opacity: 0; }
+      66% { opacity: 1; }
+      100% { transform: translateX(100%); opacity: 0; }
+    }
+
+    @keyframes redSignal {
+      0%, 100% { box-shadow: 0 0 0 rgba(255,77,77,0), inset 0 0 0 rgba(255,77,77,0); }
+      50% { box-shadow: 0 0 22px rgba(255,77,77,0.18), inset 0 0 18px rgba(255,77,77,0.04); }
+    }
+
+    @media (max-width: 980px) {
+      .cinematic-alert { top: 132px; font-size: 0.72rem; }
+      .cinematic-bars.is-active::before,
+      .cinematic-bars.is-active::after { height: 26px; }
+    }
+
+
+    /* CINÉMATIQUE+ — détails premium discrets */
+    .sector-clock {
+      margin-left: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(88,214,255,0.18);
+      background: rgba(88,214,255,0.055);
+      color: var(--accent-2);
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-shadow: 0 0 14px rgba(88,214,255,0.28);
+      flex: 0 0 auto;
+    }
+
+    .sector-clock::before {
+      content: "C17";
+      color: var(--muted);
+      font-size: 0.72em;
+      letter-spacing: 0.16em;
+    }
+
+    .terminal-pulse-line {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 34px;
+      height: 1px;
+      z-index: 83;
+      pointer-events: none;
+      background: linear-gradient(90deg, transparent, rgba(88,214,255,0.45), transparent);
+      opacity: 0.55;
+      animation: terminalPulseLine 5.8s ease-in-out infinite;
+    }
+
+    .status-mini-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .status-mini {
+      padding: 10px 11px;
+      border-radius: 12px;
+      border: 1px solid rgba(88,214,255,0.12);
+      background: rgba(255,255,255,0.028);
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .status-mini strong {
+      display: block;
+      color: var(--accent-2);
+      font-size: 0.8rem;
+      margin-bottom: 4px;
+    }
+
+    .sector-section.is-active .section-header h2,
+    .sector-section.is-active .hero h1 {
+      animation: titleSignal 3.4s ease-in-out infinite;
+    }
+
+    @keyframes terminalPulseLine {
+      0%, 100% { opacity: 0.22; transform: scaleX(0.42); }
+      50% { opacity: 0.82; transform: scaleX(1); }
+    }
+
+    @keyframes titleSignal {
+      0%, 100% { text-shadow: 0 0 18px rgba(88,214,255,0.10); }
+      50% { text-shadow: 0 0 24px rgba(88,214,255,0.24); }
+    }
+
+    @media (max-width: 720px) {
+      .sector-clock { display: none; }
+      .terminal-pulse-line { top: 42px; }
+      .status-mini-row { grid-template-columns: 1fr; }
+    }
+
+  
+
+    /* CORRECTION FINALE : caméra décalée, dispatch rouge uniquement en alerte */
+    .camera-status {
+      left: 22px !important;
+      right: auto !important;
+      bottom: 22px !important;
+      z-index: 72 !important;
+    }
+
+    .cinematic-alert {
+      top: 128px;
+    }
+
+    @media (max-width: 720px) {
+      .camera-status {
+        display: none !important;
+      }
+    }
+
   </style>
 </head>
 <body class="intro-lock">
@@ -1709,13 +1958,20 @@
   <div class="dust-layer" aria-hidden="true"></div>
   <div class="camera-status" aria-hidden="true"><span class="rec-dot"></span><span>Caméra active</span></div>
 
+  <div class="cinematic-vignette" aria-hidden="true"></div>
+  <div class="cinematic-noise" aria-hidden="true"></div>
+  <div id="cinematicBars" class="cinematic-bars" aria-hidden="true"></div>
+  <div id="cinematicAlert" class="cinematic-alert" aria-live="polite">Contrôle de secteur en cours</div>
+
   <div class="dispatch-strip" aria-label="Statut du secteur">
     <div class="dispatch-inner">
       <span class="dispatch-dot" aria-hidden="true"></span>
       <strong>Surveillance active</strong>
       <span id="dispatchMessage">Citoyen localisé — secteur C17 stable.</span>
+      <span id="sectorClock" class="sector-clock">--:-- • Brouillard</span>
     </div>
   </div>
+  <div class="terminal-pulse-line" aria-hidden="true"></div>
 
   <div id="sectorTransition" class="sector-transition" aria-hidden="true">
     <div class="sector-transition-box">
@@ -1824,6 +2080,11 @@
               <div class="badge">Secteur : C17</div>
               <div class="badge">Statut : actif</div>
               <div class="badge">Surveillance : élevée</div>
+            </div>
+            <div class="status-mini-row" aria-label="Informations du secteur">
+              <div class="status-mini"><strong>Serveur</strong>En ligne</div>
+              <div class="status-mini"><strong>Accès</strong>Ouvert</div>
+              <div class="status-mini"><strong>Climat</strong>Brouillard</div>
             </div>
             <div class="law-table-wrap" style="margin-top:16px;">
               <table class="law-table" style="min-width:0;">
@@ -2309,8 +2570,29 @@
         }
         document.body.classList.remove('intro-lock');
         document.body.classList.add('intro-complete');
+        setTimeout(() => declencherCinematique('Bienvenue en Cité 17 — surveillance active'), 450);
       }, 6200);
     });
+
+
+    function declencherCinematique(messageTexte = 'Contrôle de secteur en cours') {
+      const alerte = document.getElementById('cinematicAlert');
+      const barres = document.getElementById('cinematicBars');
+      const dispatch = document.querySelector('.dispatch-strip');
+
+      if (alerte) {
+        alerte.textContent = messageTexte;
+        alerte.classList.add('is-visible');
+      }
+      if (barres) barres.classList.add('is-active');
+      if (dispatch) dispatch.classList.add('alert-flash');
+
+      setTimeout(() => {
+        if (alerte) alerte.classList.remove('is-visible');
+        if (barres) barres.classList.remove('is-active');
+        if (dispatch) dispatch.classList.remove('alert-flash');
+      }, 2300);
+    }
 
 
     const nomsSecteurs = {
@@ -2388,6 +2670,25 @@
       afficherSecteur('accueil', false);
     }
 
+
+
+    function mettreAJourHorlogeSecteur() {
+      const horloge = document.getElementById('sectorClock');
+      if (!horloge) return;
+      const maintenant = new Date();
+      const heure = maintenant.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+      const heures = maintenant.getHours();
+      let ambiance = 'Brouillard';
+      if (heures >= 21 || heures < 6) ambiance = 'Nuit froide';
+      else if (heures >= 6 && heures < 11) ambiance = 'Brume matinale';
+      else if (heures >= 11 && heures < 18) ambiance = 'Ciel gris';
+      else ambiance = 'Fin de cycle';
+      horloge.textContent = `${heure} • ${ambiance}`;
+    }
+
+    mettreAJourHorlogeSecteur();
+    setInterval(mettreAJourHorlogeSecteur, 30000);
+
     const messagesDispatch = [
       'Citoyen localisé — secteur C17 stable.',
       'Inspection civile en cours — coopération recommandée.',
@@ -2408,6 +2709,20 @@
         message.style.opacity = '1';
       }, 220);
     }, 6500);
+
+
+    const alertesCinematiques = [
+      'Contrôle de secteur en cours',
+      'Caméra civile active',
+      'Présence citoyenne enregistrée',
+      'Directive locale mise à jour',
+      'Signal Combine détecté'
+    ];
+
+    setInterval(() => {
+      const alerte = alertesCinematiques[Math.floor(Math.random() * alertesCinematiques.length)];
+      declencherCinematique(alerte);
+    }, 32000);
 
     const elementsAReveler = document.querySelectorAll('.section, .panel, .law-card, .timeline-card, .discord-card');
     elementsAReveler.forEach((element) => element.classList.add('reveal-on-scroll'));
