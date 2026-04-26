@@ -1462,6 +1462,228 @@
       }
     }
 
+
+
+    /* VERSION VISUELLE ULTIME - SANS IMAGE EXTERNE SUPPLÉMENTAIRE */
+    .ultimate-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 4;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(88,214,255,0.055), transparent 34%),
+        radial-gradient(circle at 8% 92%, rgba(88,214,255,0.045), transparent 22%),
+        linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.22) 100%);
+      mix-blend-mode: screen;
+      opacity: 0.55;
+      animation: ultimateBreath 8s ease-in-out infinite;
+    }
+
+    .ultimate-scanlines {
+      position: fixed;
+      inset: 0;
+      z-index: 5;
+      pointer-events: none;
+      background:
+        repeating-linear-gradient(180deg, rgba(255,255,255,0.026) 0px, rgba(255,255,255,0.026) 1px, transparent 3px, transparent 7px),
+        repeating-linear-gradient(90deg, rgba(88,214,255,0.018) 0px, transparent 1px, transparent 6px);
+      opacity: 0.18;
+      animation: scanlineFlicker 3.8s steps(4, end) infinite;
+    }
+
+    .ultimate-fog-image {
+      position: fixed;
+      left: -8vw;
+      right: -8vw;
+      bottom: -5vh;
+      height: 38vh;
+      z-index: 3;
+      pointer-events: none;
+      background: url('brouillard.png') center bottom / 120% 100% no-repeat;
+      opacity: 0.18;
+      filter: blur(1px) saturate(1.1);
+      animation: fogImageDrift 22s ease-in-out infinite;
+    }
+
+    .ultimate-fog-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(88,214,255,0.12) 48%, transparent 100%);
+      opacity: 0.38;
+    }
+
+    .dust-layer {
+      position: fixed;
+      inset: 0;
+      z-index: 6;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .dust-particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      background: rgba(167,236,255,0.45);
+      box-shadow: 0 0 10px rgba(88,214,255,0.45);
+      opacity: 0;
+      animation: dustFloat linear infinite;
+    }
+
+    .camera-status {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 60;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 13px;
+      border-radius: 12px;
+      border: 1px solid rgba(88,214,255,0.20);
+      background: rgba(4,8,12,0.72);
+      color: var(--accent-2);
+      box-shadow: 0 0 26px rgba(88,214,255,0.10), inset 0 0 18px rgba(88,214,255,0.035);
+      backdrop-filter: blur(8px);
+      font-size: 0.72rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+    }
+
+    .camera-status .rec-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ff4d4d;
+      box-shadow: 0 0 16px rgba(255,77,77,0.9);
+      animation: recPulse 1.2s ease-in-out infinite;
+    }
+
+    .connection-steps {
+      position: relative;
+      z-index: 1;
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .connection-step {
+      padding: 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(88,214,255,0.12);
+      color: #d8e0ec;
+      box-shadow: inset 0 0 18px rgba(88,214,255,0.025);
+    }
+
+    .connection-step strong {
+      display: block;
+      color: var(--accent-2);
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      letter-spacing: 0.11em;
+      margin-bottom: 6px;
+    }
+
+    .connection-step span {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    .sector-section.is-active .section-header h2,
+    .hero h1 {
+      animation: titleGlow 4.6s ease-in-out infinite;
+    }
+
+    .law-card::after,
+    .panel::after,
+    .timeline-card::after,
+    .discord-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 0%, rgba(88,214,255,0.055) 48%, transparent 58%);
+      opacity: 0;
+      transform: translateX(-140%);
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .law-card:hover::after,
+    .panel:hover::after,
+    .timeline-card:hover::after,
+    .discord-card:hover::after {
+      opacity: 1;
+      animation: panelSweep 1.25s ease forwards;
+    }
+
+    .terminal-code-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .terminal-code-line::before {
+      content: "▸";
+      color: var(--accent);
+      text-shadow: 0 0 14px rgba(88,214,255,0.55);
+    }
+
+    @keyframes ultimateBreath {
+      0%, 100% { opacity: 0.38; }
+      50% { opacity: 0.68; }
+    }
+
+    @keyframes scanlineFlicker {
+      0%, 100% { opacity: 0.14; }
+      45% { opacity: 0.22; }
+      53% { opacity: 0.11; }
+      60% { opacity: 0.20; }
+    }
+
+    @keyframes fogImageDrift {
+      0%, 100% { transform: translateX(-2vw) translateY(0) scale(1.02); }
+      50% { transform: translateX(2vw) translateY(-1.2vh) scale(1.07); }
+    }
+
+    @keyframes dustFloat {
+      0% { transform: translateY(8vh) translateX(0); opacity: 0; }
+      12% { opacity: 0.32; }
+      82% { opacity: 0.18; }
+      100% { transform: translateY(-110vh) translateX(42px); opacity: 0; }
+    }
+
+    @keyframes recPulse {
+      0%, 100% { opacity: 0.42; transform: scale(0.82); }
+      50% { opacity: 1; transform: scale(1.1); }
+    }
+
+    @keyframes titleGlow {
+      0%, 100% { text-shadow: 0 0 12px rgba(88,214,255,0.08); }
+      50% { text-shadow: 0 0 24px rgba(88,214,255,0.20); }
+    }
+
+    @keyframes panelSweep {
+      from { transform: translateX(-140%); }
+      to { transform: translateX(140%); }
+    }
+
+    @media (max-width: 980px) {
+      .connection-steps { grid-template-columns: 1fr; }
+      .camera-status { display: none; }
+    }
+
   </style>
 </head>
 <body class="intro-lock">
@@ -1481,6 +1703,11 @@
     <span class="fog fog-two"></span>
   </div>
   <div class="scanner-line" aria-hidden="true"></div>
+  <div class="ultimate-fog-image" aria-hidden="true"></div>
+  <div class="ultimate-overlay" aria-hidden="true"></div>
+  <div class="ultimate-scanlines" aria-hidden="true"></div>
+  <div class="dust-layer" aria-hidden="true"></div>
+  <div class="camera-status" aria-hidden="true"><span class="rec-dot"></span><span>Caméra active</span></div>
 
   <div class="dispatch-strip" aria-label="Statut du secteur">
     <div class="dispatch-inner">
@@ -1545,6 +1772,7 @@
         <article class="hero-card">
           <div class="hero-content">
             <div class="eyebrow">City 17 • Métropolice • Contrôle civil</div>
+            <div class="terminal-code-line">Identification du citoyen en cours</div>
             <h1>OneLife — City 17</h1>
             <p class="lead">
               Sous l'autorité de la <span class="accent">Métropolice</span> et la surveillance constante de la <span class="accent-blue">Combine</span>,
@@ -1575,6 +1803,12 @@
               <strong>Communauté</strong>
               <span>Discord actif & staff présent</span>
             </div>
+          </div>
+
+          <div class="connection-steps">
+            <div class="connection-step"><strong>1. Workshop</strong><span>Abonnez-vous au contenu avant de rejoindre.</span></div>
+            <div class="connection-step"><strong>2. Discord</strong><span>Suivez les annonces et contactez le staff.</span></div>
+            <div class="connection-step"><strong>3. Connexion</strong><span>Lancez Garry's Mod puis entrez en Cité 17.</span></div>
           </div>
         </article>
 
@@ -2189,6 +2423,21 @@
 
     elementsAReveler.forEach((element) => observateur.observe(element));
 
+
+
+    const dustLayer = document.querySelector('.dust-layer');
+    if (dustLayer) {
+      for (let i = 0; i < 46; i += 1) {
+        const particle = document.createElement('span');
+        particle.className = 'dust-particle';
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.top = `${70 + Math.random() * 35}%`;
+        particle.style.animationDuration = `${14 + Math.random() * 18}s`;
+        particle.style.animationDelay = `${Math.random() * -28}s`;
+        particle.style.opacity = `${0.12 + Math.random() * 0.32}`;
+        dustLayer.appendChild(particle);
+      }
+    }
 
     const lienBoutique = 'https://onelife-rp.ovh/boutique/';
     const boutiqueModal = document.getElementById('boutiqueModal');
