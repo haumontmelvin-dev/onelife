@@ -1145,6 +1145,195 @@
       pointer-events: none !important;
     }
 
+
+
+    /* AMÉLIORATIONS LISIBILITÉ */
+    .sector-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 16px 0 22px;
+    }
+
+    .sector-summary {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 4px 0 22px;
+      padding: 14px;
+      border: 1px solid rgba(88,214,255,0.12);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.025);
+      box-shadow: inset 0 0 24px rgba(88,214,255,0.025);
+    }
+
+    .summary-chip,
+    .back-home-btn,
+    .back-top-btn {
+      cursor: pointer;
+      border: 1px solid rgba(88,214,255,0.16);
+      border-radius: 999px;
+      background: rgba(88,214,255,0.06);
+      color: var(--accent-2);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .summary-chip {
+      padding: 9px 12px;
+      font-size: 0.78rem;
+    }
+
+    .summary-chip:hover,
+    .back-home-btn:hover,
+    .back-top-btn:hover {
+      transform: translateY(-1px);
+      border-color: rgba(88,214,255,0.34);
+      background: rgba(88,214,255,0.11);
+      box-shadow: 0 0 22px rgba(88,214,255,0.11);
+    }
+
+    .back-home-btn {
+      padding: 10px 14px;
+      font-size: 0.78rem;
+    }
+
+    .workshop-help {
+      margin-top: 12px;
+      color: var(--accent-2);
+      font-size: 0.9rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      opacity: 0.9;
+    }
+
+    .back-top-btn {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 70;
+      padding: 12px 15px;
+      font-size: 0.78rem;
+      background: rgba(5,8,12,0.84);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 14px 34px rgba(0,0,0,0.35);
+    }
+
+    .footer-card span strong {
+      color: var(--accent-2);
+      font-weight: 900;
+    }
+
+
+    /* CORRECTION FINALE NAVIGATION + BOUTIQUE */
+    .nav {
+      align-items: center;
+      min-height: 86px;
+    }
+
+    .nav-links {
+      flex: 1 1 auto;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      min-height: 46px;
+      overflow: visible;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+      flex: 0 0 auto;
+      min-height: 46px;
+      position: relative;
+      z-index: 40;
+    }
+
+    .boutique-nav-btn {
+      appearance: none;
+      -webkit-appearance: none;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      height: 46px !important;
+      min-height: 46px !important;
+      padding: 0 18px !important;
+      border-radius: 999px !important;
+      border: 1px solid rgba(255, 90, 90, 0.62) !important;
+      background: rgba(255, 70, 70, 0.08) !important;
+      color: #ffb8b8 !important;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03), 0 0 22px rgba(255,0,0,0.10) !important;
+      font: inherit !important;
+      font-size: 0.88rem !important;
+      font-weight: 900 !important;
+      line-height: 1 !important;
+      letter-spacing: 0.04em !important;
+      text-transform: uppercase !important;
+      cursor: pointer !important;
+      position: relative !important;
+      z-index: 50 !important;
+      pointer-events: auto !important;
+      user-select: none;
+      margin: 0 !important;
+      box-sizing: border-box !important;
+    }
+
+    .boutique-nav-btn:hover,
+    .boutique-nav-btn:focus-visible {
+      color: #fffafa !important;
+      background: rgba(255, 60, 60, 0.16) !important;
+      border-color: rgba(255, 120, 120, 0.82) !important;
+      box-shadow: 0 0 28px rgba(255,45,45,0.24), inset 0 0 0 1px rgba(255,255,255,0.06) !important;
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .visible-summary {
+      display: flex !important;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 24px !important;
+      padding: 16px !important;
+      border: 1px solid rgba(88,214,255,0.20) !important;
+      border-radius: 16px !important;
+      background: linear-gradient(180deg, rgba(88,214,255,0.07), rgba(255,255,255,0.025)) !important;
+      box-shadow: 0 18px 48px rgba(0,0,0,0.22), inset 0 0 24px rgba(88,214,255,0.035) !important;
+    }
+
+    .visible-summary strong {
+      color: var(--accent-2);
+      text-transform: uppercase;
+      letter-spacing: 0.10em;
+      font-size: 0.82rem;
+      margin-right: 4px;
+      white-space: nowrap;
+    }
+
+    .visible-summary .summary-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 36px;
+      text-decoration: none;
+    }
+
+    @media (max-width: 1180px) {
+      .nav {
+        flex-wrap: wrap;
+        padding: 12px 0 16px;
+      }
+      .nav-links {
+        order: 3;
+        flex-basis: 100%;
+        justify-content: flex-start;
+      }
+    }
+
   </style>
 </head>
 <body class="intro-lock">
@@ -1213,10 +1402,12 @@
         <button class="sector-link" type="button" data-sector="regles-cite">Règles de la cité</button>
         <button class="sector-link" type="button" data-sector="regles-serveur">Règles serveur</button>
         <button class="sector-link" type="button" data-sector="histoire">Histoire</button>
-        <button class="boutique-nav-btn" type="button" data-boutique-open>Boutique</button>
       </nav>
 
-      <a class="nav-cta" href="https://discord.gg/kpkrKFGxrS" target="_blank" rel="noopener noreferrer">Rejoindre le Discord</a>
+      <div class="nav-actions">
+        <button class="boutique-nav-btn" type="button" data-boutique-open>Boutique</button>
+        <a class="nav-cta" href="https://discord.gg/kpkrKFGxrS" target="_blank" rel="noopener noreferrer">Rejoindre le Discord</a>
+      </div>
     </div>
   </header>
 
@@ -1241,6 +1432,7 @@
             <a class="btn btn-secondary" href="https://discord.gg/DgvfnvmGdA" target="_blank" rel="noopener noreferrer">Demande de déban</a>
             <a class="btn btn-workshop" href="https://steamcommunity.com/sharedfiles/filedetails/?id=1546165665" target="_blank" rel="noopener noreferrer">Workshop</a>
           </div>
+          <p class="workshop-help">Pensez à vous abonner au Workshop avant de rejoindre le serveur.</p>
 
           <div class="hero-stats">
             <div class="stat">
@@ -1323,8 +1515,18 @@
           <button class="sector-mini-btn" type="button" data-sector="accueil">Retour accueil</button>
         </div>
 
+        <div class="sector-summary visible-summary" aria-label="Sommaire des lois C17">
+          <strong>Sommaire C17</strong>
+          <a class="summary-chip" href="#cite-comportement">Comportement civil</a>
+          <a class="summary-chip" href="#cite-infractions">Infractions majeures</a>
+          <a class="summary-chip" href="#cite-contrebande">Contrebande</a>
+          <a class="summary-chip" href="#cite-complementaires">Articles complémentaires</a>
+          <a class="summary-chip" href="#cite-logement">Logement</a>
+          <a class="summary-chip" href="#cite-commerce">Commerce</a>
+        </div>
+
         <div class="law-grid">
-          <article class="law-card">
+          <article class="law-card" id="cite-comportement">
             <h3>Comportement civil</h3>
             <ul>
               <li><strong>Art 1 :</strong> Il est interdit de sauter, grimper, escalader, crier ou se cacher. <span class="verdict">Verdict 1.</span></li>
@@ -1342,7 +1544,7 @@
             </ul>
           </article>
 
-          <article class="law-card">
+          <article class="law-card" id="cite-infractions">
             <h3>Infractions majeures</h3>
             <ul>
               <li><strong>Art 10 :</strong> Toute pratique religieuse est interdite. <span class="verdict">Verdict 4.</span></li>
@@ -1362,7 +1564,7 @@
             </ul>
           </article>
 
-          <article class="law-card law-full">
+          <article class="law-card law-full" id="cite-contrebande">
             <h3>Contrebande</h3>
             <div class="law-details" open>
               <summary>Niveau 1</summary>
@@ -1387,7 +1589,7 @@
             </div>
           </article>
 
-          <article class="law-card law-full">
+          <article class="law-card law-full" id="cite-complementaires">
             <h3>Articles complémentaires C17</h3>
             <ul>
               <li><strong>Art 17 :</strong> Vandaliser les infrastructures et propriétés est interdit. <span class="verdict">Verdict 4.</span> Une propriété PC vandalisée vaut <span class="verdict">Verdict 6.</span></li>
@@ -1406,7 +1608,7 @@
             </ul>
           </article>
 
-          <article class="law-card law-full">
+          <article class="law-card law-full" id="cite-logement">
             <h3>Lois logement</h3>
             <div class="law-details" open>
               <summary>Répartition des logements</summary>
@@ -1440,7 +1642,7 @@
             </div>
           </article>
 
-          <article class="law-card law-full">
+          <article class="law-card law-full" id="cite-commerce">
             <h3>Lois commerce</h3>
             <div class="law-details" open>
               <summary>Conditions pour obtenir et gérer un commerce</summary>
@@ -1487,8 +1689,18 @@
           <button class="sector-mini-btn" type="button" data-sector="accueil">Retour accueil</button>
         </div>
 
+        <div class="sector-summary visible-summary" aria-label="Sommaire des règles serveur">
+          <strong>Sommaire serveur</strong>
+          <a class="summary-chip" href="#srv-communes">Règles communes</a>
+          <a class="summary-chip" href="#srv-mpf">MPF / OTA</a>
+          <a class="summary-chip" href="#srv-loyalistes">Loyalistes / CWU</a>
+          <a class="summary-chip" href="#srv-anti">Anti-citoyens</a>
+          <a class="summary-chip" href="#srv-tableau">Tableau anti-citoyen</a>
+          <a class="summary-chip" href="#srv-braquages">Braquages</a>
+        </div>
+
         <div class="law-grid">
-          <article class="law-card law-full">
+          <article class="law-card law-full" id="srv-communes">
             <h3>Règles communes</h3>
             <div class="law-details" open>
               <summary>Roleplay, cohérence et identité</summary>
@@ -1530,7 +1742,7 @@
             </div>
           </article>
 
-          <article class="law-card law-full">
+          <article class="law-card law-full" id="srv-mpf">
             <h3>Règles MPF / OTA</h3>
             <div class="law-details" open>
               <summary>Principes généraux</summary>
@@ -1562,7 +1774,7 @@
             </div>
           </article>
 
-          <article class="law-card">
+          <article class="law-card" id="srv-loyalistes">
             <h3>Loyalistes / CWU</h3>
             <ul>
               <li>Les loyalistes peuvent être corrompus sans staff sauf rang 7, qui exige ticket, motivation réelle et validation staff.</li>
@@ -1572,7 +1784,7 @@
             </ul>
           </article>
 
-          <article class="law-card">
+          <article class="law-card" id="srv-anti">
             <h3>Anti-citoyens</h3>
             <ul>
               <li>Pas d'attaque en cité sous 4 MPF connectés. OTA et scanners comptent, RCT non.</li>
@@ -1583,7 +1795,7 @@
             </ul>
           </article>
 
-          <article class="law-card law-full">
+          <article class="law-card law-full" id="srv-tableau">
             <h3>Tableau anti-citoyen</h3>
             <p class="muted-line">Reprise du tableau envoyé pour les valeurs Tokens / Civils / CWU / PC.</p>
             <div class="law-table-wrap">
@@ -1611,7 +1823,7 @@
             </div>
           </article>
 
-          <article class="law-card law-full">
+          <article class="law-card law-full" id="srv-braquages">
             <h3>Braquages, rackets et prises d'otage</h3>
             <ul>
               <li>Le refuge est une zone de Mass RP : aucun braquage autorisé.</li>
@@ -1717,7 +1929,7 @@
 
   <footer class="footer">
     <div class="container footer-card">
-      <span>© OneLife — HL2RP • Créer par Polia</span>
+      <span>© OneLife — HL2RP • <strong>Créé par Polia</strong></span>
       <div class="footer-links">
         <button class="footer-sector-link" type="button" data-sector="accueil">Accueil</button>
         <button class="footer-sector-link" type="button" data-sector="regles-cite">Règles de la cité</button>
@@ -1726,6 +1938,8 @@
       </div>
     </div>
   </footer>
+
+  <button class="back-top-btn" type="button" aria-label="Retour en haut">Haut ↑</button>
 
   <script>
     window.addEventListener('load', () => {
@@ -1911,6 +2125,22 @@
       refreshGameTracker(false);
       setInterval(() => refreshGameTracker(false), 60000);
     });
+
+
+    document.querySelectorAll('[data-scroll-target]').forEach((bouton) => {
+      bouton.addEventListener('click', () => {
+        const cible = document.getElementById(bouton.dataset.scrollTarget);
+        if (!cible) return;
+        cible.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    const boutonHaut = document.querySelector('.back-top-btn');
+    if (boutonHaut) {
+      boutonHaut.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
 
     function copyIP() {
       const ip = document.getElementById('serverAddress').innerText.trim();
