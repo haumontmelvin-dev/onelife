@@ -729,6 +729,10 @@
     }
 
     .nav-links .sector-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
       padding: 10px 14px;
       border-radius: 999px;
       color: var(--muted);
@@ -738,6 +742,10 @@
       border: 1px solid transparent;
       transition: 0.22s ease;
       letter-spacing: 0.02em;
+      line-height: 1;
+      position: relative;
+      z-index: 3;
+      pointer-events: auto;
     }
 
     .nav-links .sector-link:hover,
@@ -914,6 +922,9 @@
     .boutique-link {
       color: #ffd9d9 !important;
       border-color: rgba(255, 80, 80, 0.22) !important;
+      background: rgba(255, 60, 60, 0.045) !important;
+      min-width: 104px;
+      cursor: pointer;
     }
 
     .boutique-link:hover {
@@ -1044,6 +1055,44 @@
       background: rgba(255,255,255,0.04);
       color: var(--text);
       border-color: rgba(255,255,255,0.10);
+    }
+
+
+    .gametracker-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .gametracker-refresh {
+      cursor: pointer;
+      border: 1px solid rgba(88,214,255,0.18);
+      border-radius: 999px;
+      background: rgba(88,214,255,0.08);
+      color: var(--accent-2);
+      padding: 9px 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 0.76rem;
+      transition: 0.2s ease;
+    }
+
+    .gametracker-refresh:hover {
+      color: var(--text);
+      border-color: rgba(88,214,255,0.32);
+      box-shadow: 0 0 20px rgba(88,214,255,0.12);
+      transform: translateY(-1px);
+    }
+
+    #gametrackerStatus {
+      color: var(--muted);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
     }
 
   </style>
@@ -1199,8 +1248,12 @@
               <h3 style="margin-bottom:10px;">Joueurs en ligne</h3>
               <p class="muted-line">Le compteur ci-dessous vient de GameTracker et se met à jour selon le scan du serveur.</p>
               <a href="https://www.gametracker.com/server_info/164.132.206.223:27015/" target="_blank" rel="noopener noreferrer">
-                <img src="https://cache.gametracker.com/server_info/164.132.206.223:27015/b_560_95_1.png" border="0" width="560" height="95" alt="GameTracker OneLife" style="width:100%;border-radius:10px;border:1px solid rgba(88,214,255,0.12);margin-top:10px;" />
+                <img id="gametrackerBanner" src="https://cache.gametracker.com/server_info/164.132.206.223:27015/b_560_95_1.png" border="0" width="560" height="95" alt="GameTracker OneLife" style="width:100%;border-radius:10px;border:1px solid rgba(88,214,255,0.12);margin-top:10px;" />
               </a>
+              <div class="gametracker-actions">
+                <button class="gametracker-refresh" type="button" onclick="refreshGameTracker(true)">Rafraîchir le compteur</button>
+                <span id="gametrackerStatus">Actualisation automatique activée</span>
+              </div>
             </div>
           </section>
         </aside>
@@ -1786,6 +1839,27 @@
 
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') fermerBoutiqueModal();
+    });
+
+    const gametrackerBaseUrl = 'https://cache.gametracker.com/server_info/164.132.206.223:27015/b_560_95_1.png';
+
+    function refreshGameTracker(manuel = false) {
+      const banner = document.getElementById('gametrackerBanner');
+      const status = document.getElementById('gametrackerStatus');
+      if (!banner) return;
+
+      banner.src = gametrackerBaseUrl + '?refresh=' + Date.now();
+
+      if (status) {
+        const maintenant = new Date();
+        const heure = maintenant.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+        status.textContent = manuel ? 'Compteur rechargé à ' + heure : 'Dernier rechargement : ' + heure;
+      }
+    }
+
+    window.addEventListener('load', () => {
+      refreshGameTracker(false);
+      setInterval(() => refreshGameTracker(false), 60000);
     });
 
     function copyIP() {
