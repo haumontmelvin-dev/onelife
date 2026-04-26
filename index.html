@@ -162,6 +162,18 @@
     .btn-primary { background: linear-gradient(135deg, var(--accent), #86e6ff); color: #061019; }
     .btn-secondary { background: rgba(255,255,255,0.04); color: var(--text); border-color: rgba(88,214,255,0.12); }
 
+    .btn-workshop {
+      background: linear-gradient(135deg, #9f1f1f, #ff4b4b);
+      color: #fff5f5;
+      border-color: rgba(255, 100, 100, 0.42);
+      box-shadow: 0 12px 28px rgba(255, 40, 40, 0.20);
+    }
+
+    .btn-workshop:hover {
+      box-shadow: 0 16px 34px rgba(255, 40, 40, 0.30);
+      border-color: rgba(255, 120, 120, 0.62);
+    }
+
     .hero-stats {
       display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 30px;
     }
@@ -366,6 +378,214 @@
     }
 
 
+    /* AMBIANCE CITY 17 */
+    body {
+      padding-top: 34px;
+    }
+
+    .site-header, main, .footer {
+      position: relative;
+      z-index: 2;
+    }
+
+    .site-header {
+      top: 34px;
+    }
+
+    .dispatch-strip {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 34px;
+      z-index: 80;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(88,214,255,0.16);
+      background: linear-gradient(90deg, rgba(3,6,10,0.98), rgba(8,15,21,0.94), rgba(3,6,10,0.98));
+      box-shadow: 0 8px 26px rgba(0,0,0,0.34);
+      color: var(--muted);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      backdrop-filter: blur(8px);
+    }
+
+    .dispatch-inner {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      white-space: nowrap;
+    }
+
+    #dispatchMessage { transition: opacity 0.22s ease; }
+
+    .dispatch-inner strong {
+      color: var(--accent-2);
+      text-shadow: 0 0 14px rgba(88,214,255,0.35);
+    }
+
+    .dispatch-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 16px rgba(88,214,255,0.95);
+      animation: pulseDot 1.8s ease-in-out infinite;
+      flex: 0 0 auto;
+    }
+
+    .ambient-layer {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .ambient-layer::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 12% 20%, rgba(88,214,255,0.07), transparent 24%),
+        radial-gradient(circle at 80% 10%, rgba(167,236,255,0.045), transparent 20%),
+        radial-gradient(circle at 50% 90%, rgba(88,214,255,0.035), transparent 28%);
+      opacity: 0.72;
+      animation: cityBreath 9s ease-in-out infinite;
+    }
+
+    .ambient-layer::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(115deg, transparent 0%, transparent 43%, rgba(88,214,255,0.08) 48%, transparent 54%, transparent 100%);
+      transform: translateX(-120%);
+      animation: surveillanceSweep 14s ease-in-out infinite;
+      opacity: 0.55;
+    }
+
+    .fog {
+      position: absolute;
+      width: 46vw;
+      height: 28vh;
+      min-width: 360px;
+      border-radius: 999px;
+      filter: blur(34px);
+      opacity: 0.14;
+      background: rgba(170, 220, 235, 0.28);
+      animation: fogMove 24s linear infinite;
+    }
+
+    .fog-one { left: -18vw; bottom: 8vh; }
+    .fog-two { right: -20vw; top: 28vh; animation-duration: 31s; animation-delay: -9s; }
+
+    .scanner-line {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: -120px;
+      height: 110px;
+      z-index: 3;
+      pointer-events: none;
+      background: linear-gradient(180deg, transparent, rgba(88,214,255,0.10), transparent);
+      filter: blur(1px);
+      opacity: 0;
+      animation: scannerLine 18s ease-in-out infinite;
+    }
+
+    .hero-card, .panel, .law-card, .timeline-card, .discord-card, .footer-card {
+      transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+    }
+
+    .hero-card:hover, .panel:hover, .law-card:hover, .timeline-card:hover, .discord-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(88,214,255,0.22);
+      box-shadow: 0 28px 90px rgba(0,0,0,0.64), 0 0 34px rgba(88,214,255,0.08);
+    }
+
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 0.45; transform: scale(0.88); }
+      50% { opacity: 1; transform: scale(1.12); }
+    }
+
+    @keyframes cityBreath {
+      0%, 100% { opacity: 0.45; }
+      50% { opacity: 0.85; }
+    }
+
+    @keyframes surveillanceSweep {
+      0%, 62% { transform: translateX(-120%); opacity: 0; }
+      70% { opacity: 0.50; }
+      100% { transform: translateX(120%); opacity: 0; }
+    }
+
+    @keyframes scannerLine {
+      0%, 76% { top: -120px; opacity: 0; }
+      80% { opacity: 0.45; }
+      94% { top: 110vh; opacity: 0.25; }
+      100% { top: 110vh; opacity: 0; }
+    }
+
+    @keyframes fogMove {
+      0% { transform: translateX(0) translateY(0); }
+      50% { transform: translateX(18vw) translateY(-3vh); }
+      100% { transform: translateX(0) translateY(0); }
+    }
+
+    @media (max-width: 720px) {
+      body { padding-top: 42px; }
+      .site-header { top: 42px; }
+      .dispatch-strip { height: 42px; }
+      .dispatch-inner { font-size: 0.68rem; gap: 9px; }
+      .dispatch-inner span:last-child { overflow: hidden; text-overflow: ellipsis; }
+    }
+
+
+    .btn, .nav-cta, .copy-btn {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::after, .nav-cta::after, .copy-btn::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.26), transparent);
+      transform: translateX(-130%);
+      transition: transform 0.55s ease;
+      pointer-events: none;
+    }
+
+    .btn:hover::after, .nav-cta:hover::after, .copy-btn:hover::after {
+      transform: translateX(130%);
+    }
+
+    .brand-badge {
+      animation: badgeGlow 4s ease-in-out infinite;
+    }
+
+    @keyframes badgeGlow {
+      0%, 100% { box-shadow: 0 0 18px rgba(88,214,255,0.13), inset 0 0 16px rgba(88,214,255,0.08); }
+      50% { box-shadow: 0 0 30px rgba(88,214,255,0.24), inset 0 0 18px rgba(88,214,255,0.12); }
+    }
+
+
     /* INTRO GARE CITY 17 */
     #intro-screen {
       position: fixed;
@@ -497,6 +717,335 @@
       to { opacity: 0; visibility: hidden; pointer-events: none; }
     }
 
+
+
+    /* NAVIGATION PAR SECTEURS */
+    .nav-links button,
+    .footer-sector-link {
+      font: inherit;
+      cursor: pointer;
+      background: transparent;
+      color: inherit;
+    }
+
+    .nav-links .sector-link {
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.88rem;
+      border: 1px solid transparent;
+      transition: 0.22s ease;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links .sector-link:hover,
+    .nav-links .sector-link.is-active {
+      color: var(--text);
+      border-color: rgba(88,214,255,0.26);
+      background: rgba(88,214,255,0.08);
+      box-shadow: 0 0 22px rgba(88,214,255,0.10), inset 0 0 0 1px rgba(88,214,255,0.05);
+    }
+
+    .sector-section {
+      display: none;
+      min-height: calc(100vh - 150px);
+    }
+
+    .sector-section.is-active {
+      display: block;
+      animation: sectorAppear 0.62s ease both;
+    }
+
+    .sector-section:not(#accueil) {
+      padding-top: 58px;
+      padding-bottom: 58px;
+    }
+
+    .sector-section:not(#accueil) .container::before {
+      content: "Terminal du secteur";
+      display: inline-flex;
+      margin-bottom: 18px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(88,214,255,0.18);
+      background: rgba(88,214,255,0.06);
+      color: var(--accent);
+      font-size: 0.74rem;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .sector-transition {
+      position: fixed;
+      inset: 0;
+      z-index: 9000;
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+      display: grid;
+      place-items: center;
+      background:
+        repeating-linear-gradient(180deg, rgba(255,255,255,0.035) 0px, rgba(255,255,255,0.035) 1px, transparent 3px, transparent 7px),
+        radial-gradient(circle at center, rgba(88,214,255,0.12), rgba(0,0,0,0.92) 62%);
+      transition: opacity 0.22s ease, visibility 0.22s ease;
+    }
+
+    .sector-transition.is-active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .sector-transition-box {
+      width: min(560px, calc(100% - 34px));
+      padding: 26px;
+      text-align: center;
+      border-radius: 18px;
+      border: 1px solid rgba(88,214,255,0.28);
+      background: rgba(5,8,12,0.78);
+      box-shadow: 0 0 70px rgba(88,214,255,0.18), 0 28px 80px rgba(0,0,0,0.75);
+      backdrop-filter: blur(8px);
+      transform: translateY(10px) scale(0.98);
+      transition: transform 0.22s ease;
+    }
+
+    .sector-transition.is-active .sector-transition-box {
+      transform: translateY(0) scale(1);
+    }
+
+    .sector-transition-box strong {
+      display: block;
+      color: var(--accent-2);
+      font-size: clamp(1.25rem, 3vw, 2.15rem);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-shadow: 0 0 22px rgba(88,214,255,0.38);
+    }
+
+    .sector-transition-box span {
+      display: block;
+      margin-top: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.82rem;
+    }
+
+    .footer-sector-link {
+      border: 0;
+      padding: 0;
+      color: var(--muted);
+      font-weight: 800;
+      transition: color 0.2s ease;
+    }
+
+    .footer-sector-link:hover {
+      color: var(--accent-2);
+    }
+
+
+
+    .nav-links .sector-link {
+      position: relative;
+    }
+
+    .nav-links .sector-link::after {
+      content: "";
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 5px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transform: scaleX(0.45);
+      transition: opacity 0.22s ease, transform 0.22s ease;
+    }
+
+    .nav-links .sector-link.is-active::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    .sector-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: -4px 0 22px;
+    }
+
+    .sector-mini-btn {
+      border: 1px solid rgba(88,214,255,0.18);
+      background: rgba(88,214,255,0.06);
+      color: var(--accent-2);
+      border-radius: 999px;
+      padding: 10px 14px;
+      cursor: pointer;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: 0.22s ease;
+    }
+
+    .sector-mini-btn:hover {
+      color: var(--text);
+      border-color: rgba(88,214,255,0.32);
+      background: rgba(88,214,255,0.10);
+      box-shadow: 0 0 24px rgba(88,214,255,0.12);
+      transform: translateY(-1px);
+    }
+
+    .footer-card span {
+      color: var(--accent-2);
+      font-weight: 900;
+      letter-spacing: 0.03em;
+    }
+
+    @keyframes sectorAppear {
+      from { opacity: 0; transform: translateY(18px); filter: blur(4px); }
+      to { opacity: 1; transform: translateY(0); filter: blur(0); }
+    }
+
+
+    /* FENÊTRE BOUTIQUE / TERMINAL */
+    .boutique-link {
+      color: #ffd9d9 !important;
+      border-color: rgba(255, 80, 80, 0.22) !important;
+    }
+
+    .boutique-link:hover {
+      color: #ffffff !important;
+      background: rgba(255, 60, 60, 0.10) !important;
+      border-color: rgba(255, 90, 90, 0.42) !important;
+      box-shadow: 0 0 24px rgba(255, 0, 0, 0.12), inset 0 0 0 1px rgba(255,255,255,0.04) !important;
+    }
+
+    .boutique-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9200;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      background:
+        repeating-linear-gradient(180deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 3px, transparent 7px),
+        radial-gradient(circle at center, rgba(255, 64, 64, 0.12), rgba(0,0,0,0.90) 66%);
+      transition: opacity 0.22s ease, visibility 0.22s ease;
+    }
+
+    .boutique-modal.is-active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .boutique-terminal {
+      width: min(640px, 100%);
+      overflow: hidden;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 92, 92, 0.34);
+      background: linear-gradient(180deg, rgba(12, 8, 10, 0.96), rgba(5, 8, 12, 0.97));
+      box-shadow: 0 0 70px rgba(255, 0, 0, 0.16), 0 34px 100px rgba(0,0,0,0.78);
+      transform: translateY(12px) scale(0.98);
+      transition: transform 0.22s ease;
+    }
+
+    .boutique-modal.is-active .boutique-terminal {
+      transform: translateY(0) scale(1);
+    }
+
+    .boutique-terminal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255, 60, 60, 0.08);
+      color: #ffd9d9;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.78rem;
+    }
+
+    .boutique-close {
+      cursor: pointer;
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.04);
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 900;
+    }
+
+    .boutique-terminal-body {
+      padding: 30px;
+      text-align: center;
+    }
+
+    .boutique-warning {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 70, 70, 0.10);
+      border: 1px solid rgba(255, 70, 70, 0.28);
+      color: #ff9d9d;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.76rem;
+    }
+
+    .boutique-question {
+      margin: 0;
+      color: #fff;
+      font-size: clamp(1.55rem, 4vw, 2.55rem);
+      line-height: 1.12;
+      text-transform: uppercase;
+      letter-spacing: 0.035em;
+      text-shadow: 0 0 24px rgba(255, 80, 80, 0.36);
+    }
+
+    .boutique-note {
+      margin: 16px auto 0;
+      max-width: 54ch;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .boutique-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .btn-danger {
+      background: linear-gradient(135deg, #b71c1c, #ff4747);
+      color: #fff;
+      border-color: rgba(255, 92, 92, 0.38);
+      box-shadow: 0 14px 30px rgba(255, 0, 0, 0.18);
+    }
+
+    .btn-muted {
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      border-color: rgba(255,255,255,0.10);
+    }
+
   </style>
 </head>
 <body class="intro-lock">
@@ -510,6 +1059,46 @@
       <div class="intro-subline">Préparation du terminal citoyen</div>
     </div>
   </div>
+
+  <div class="ambient-layer" aria-hidden="true">
+    <span class="fog fog-one"></span>
+    <span class="fog fog-two"></span>
+  </div>
+  <div class="scanner-line" aria-hidden="true"></div>
+
+  <div class="dispatch-strip" aria-label="Statut du secteur">
+    <div class="dispatch-inner">
+      <span class="dispatch-dot" aria-hidden="true"></span>
+      <strong>Surveillance active</strong>
+      <span id="dispatchMessage">Citoyen localisé — secteur C17 stable.</span>
+    </div>
+  </div>
+
+  <div id="sectorTransition" class="sector-transition" aria-hidden="true">
+    <div class="sector-transition-box">
+      <strong>Changement de secteur</strong>
+      <span id="sectorTransitionText">Chargement du terminal...</span>
+    </div>
+  </div>
+
+  <div id="boutiqueModal" class="boutique-modal" aria-hidden="true">
+    <div class="boutique-terminal" role="dialog" aria-modal="true" aria-labelledby="boutiqueQuestion">
+      <div class="boutique-terminal-header">
+        <span>Terminal boutique — vérification requise</span>
+        <button class="boutique-close" type="button" data-boutique-close aria-label="Fermer">×</button>
+      </div>
+      <div class="boutique-terminal-body">
+        <div class="boutique-warning">Accès externe</div>
+        <h2 id="boutiqueQuestion" class="boutique-question">Es-tu bien connecté sur le serveur avant d'y accéder&nbsp;?</h2>
+        <p class="boutique-note">La boutique s'ouvrira dans un nouvel onglet. Assure-toi d'être connecté en jeu pour éviter toute erreur lors de ton achat.</p>
+        <div class="boutique-actions">
+          <button class="btn btn-danger" type="button" data-boutique-confirm>Oui, ouvrir la boutique</button>
+          <button class="btn btn-muted" type="button" data-boutique-close>Non, rester ici</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <header class="site-header">
     <div class="container nav">
       <a href="#top" class="brand">
@@ -520,10 +1109,12 @@
         </div>
       </a>
 
-      <nav class="nav-links">
-        <a href="#regles-cite">Règles de la cité</a>
-        <a href="#regles-serveur">Règles serveur</a>
-        <a href="#histoire">Histoire</a>
+      <nav class="nav-links" aria-label="Navigation des secteurs">
+        <button class="sector-link is-active" type="button" data-sector="accueil">Accueil</button>
+        <button class="sector-link" type="button" data-sector="regles-cite">Règles de la cité</button>
+        <button class="sector-link" type="button" data-sector="regles-serveur">Règles serveur</button>
+        <button class="sector-link" type="button" data-sector="histoire">Histoire</button>
+        <button class="sector-link boutique-link" type="button" data-boutique-open>Boutique</button>
       </nav>
 
       <a class="nav-cta" href="https://discord.gg/kpkrKFGxrS" target="_blank" rel="noopener noreferrer">Rejoindre le Discord</a>
@@ -531,7 +1122,7 @@
   </header>
 
   <main id="top">
-    <section class="hero">
+    <section id="accueil" class="hero sector-section is-active" data-sector-panel="accueil">
       <div class="container hero-wrap">
         <article class="hero-card">
           <div class="hero-content">
@@ -549,6 +1140,7 @@
             <a class="btn btn-primary" href="steam://connect/164.132.206.223:27015">Rejoindre le serveur</a>
             <a class="btn btn-secondary" href="https://discord.gg/kpkrKFGxrS" target="_blank" rel="noopener noreferrer">Discord principal</a>
             <a class="btn btn-secondary" href="https://discord.gg/DgvfnvmGdA" target="_blank" rel="noopener noreferrer">Demande de déban</a>
+            <a class="btn btn-workshop" href="https://steamcommunity.com/sharedfiles/filedetails/?id=1546165665" target="_blank" rel="noopener noreferrer">Workshop</a>
           </div>
 
           <div class="hero-stats">
@@ -615,13 +1207,17 @@
       </div>
     </section>
 
-    <section id="regles-cite" class="section">
+    <section id="regles-cite" class="section sector-section" data-sector-panel="regles-cite">
       <div class="container">
         <div class="section-header">
           <div>
             <h2>Les lois C17</h2>
             <p>Code civil du secteur, lois de logement et directives commerciales appliquées dans la cité. Cette version reprend le format HL2RP demandé pour OneLife.</p>
           </div>
+        </div>
+
+        <div class="sector-actions">
+          <button class="sector-mini-btn" type="button" data-sector="accueil">Retour accueil</button>
         </div>
 
         <div class="law-grid">
@@ -775,13 +1371,17 @@
       </div>
     </section>
 
-<section id="regles-serveur" class="section">
+<section id="regles-serveur" class="section sector-section" data-sector-panel="regles-serveur">
       <div class="container">
         <div class="section-header">
           <div>
             <h2>Directives du serveur</h2>
             <p>Règles communes, règles MPF/OTA, règles loyalistes/CWU et directives anti-citoyennes.</p>
           </div>
+        </div>
+
+        <div class="sector-actions">
+          <button class="sector-mini-btn" type="button" data-sector="accueil">Retour accueil</button>
         </div>
 
         <div class="law-grid">
@@ -934,13 +1534,17 @@
       </div>
     </section>
 
-<section id="histoire" class="section">
+<section id="histoire" class="section sector-section" data-sector-panel="histoire">
       <div class="container">
         <div class="section-header">
           <div>
             <h2>Chronologie du secteur</h2>
             <p>Une base de lore inspirée de Half-Life 2.</p>
           </div>
+        </div>
+
+        <div class="sector-actions">
+          <button class="sector-mini-btn" type="button" data-sector="accueil">Retour accueil</button>
         </div>
 
         <div class="timeline">
@@ -967,12 +1571,16 @@
       </div>
     </section>
 
-    <section id="discord" class="section">
+    <section id="discord" class="section sector-section" data-sector-panel="discord">
       <div class="container">
         <div class="section-header">
           <div>
             <h2>Terminal communautaire</h2>
           </div>
+        </div>
+
+        <div class="sector-actions">
+          <button class="sector-mini-btn" type="button" data-sector="accueil">Retour accueil</button>
         </div>
 
         <div class="discord-grid">
@@ -1006,12 +1614,12 @@
 
   <footer class="footer">
     <div class="container footer-card">
-      <span>© OneLife — HL2RP</span>
+      <span>© OneLife — HL2RP • Créer par Polia</span>
       <div class="footer-links">
-        <a href="#top">Accueil</a>
-        <a href="#regles-cite">Règles de la cité</a>
-        <a href="#regles-serveur">Règles serveur</a>
-        <a href="#histoire">Histoire</a>
+        <button class="footer-sector-link" type="button" data-sector="accueil">Accueil</button>
+        <button class="footer-sector-link" type="button" data-sector="regles-cite">Règles de la cité</button>
+        <button class="footer-sector-link" type="button" data-sector="regles-serveur">Règles serveur</button>
+        <button class="footer-sector-link" type="button" data-sector="histoire">Histoire</button>
       </div>
     </div>
   </footer>
@@ -1026,6 +1634,158 @@
         document.body.classList.remove('intro-lock');
         document.body.classList.add('intro-complete');
       }, 6200);
+    });
+
+
+    const nomsSecteurs = {
+      accueil: 'Accueil — terminal principal',
+      'regles-cite': 'Lois C17 — accès civil',
+      'regles-serveur': 'Directives serveur — consultation',
+      histoire: 'Chronologie du secteur — archives',
+      discord: 'Réseau communautaire — liaison active'
+    };
+
+    const textesTransition = {
+      accueil: 'Retour au terminal principal...',
+      'regles-cite': 'Chargement des lois de la cité...',
+      'regles-serveur': 'Chargement des directives serveur...',
+      histoire: 'Ouverture des archives du secteur...',
+      discord: 'Connexion au réseau communautaire...'
+    };
+
+    function afficherSecteur(secteur, avecTransition = true) {
+      const panneaux = document.querySelectorAll('[data-sector-panel]');
+      const liens = document.querySelectorAll('[data-sector]');
+      const cible = document.querySelector(`[data-sector-panel="${secteur}"]`);
+      if (!cible) return;
+
+      const appliquer = () => {
+        panneaux.forEach((panneau) => panneau.classList.toggle('is-active', panneau.dataset.sectorPanel === secteur));
+        liens.forEach((lien) => lien.classList.toggle('is-active', lien.dataset.sector === secteur));
+
+        const message = document.getElementById('dispatchMessage');
+        if (message && nomsSecteurs[secteur]) {
+          message.textContent = nomsSecteurs[secteur];
+        }
+
+        history.replaceState(null, '', secteur === 'accueil' ? '#top' : `#${secteur}`);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        document.querySelectorAll('.reveal-on-scroll').forEach((element) => {
+          if (element.closest('.sector-section.is-active')) {
+            element.classList.add('is-visible');
+          }
+        });
+      };
+
+      if (!avecTransition) {
+        appliquer();
+        return;
+      }
+
+      const transition = document.getElementById('sectorTransition');
+      const transitionText = document.getElementById('sectorTransitionText');
+      if (!transition) {
+        appliquer();
+        return;
+      }
+
+      if (transitionText) {
+        transitionText.textContent = textesTransition[secteur] || 'Chargement du secteur...';
+      }
+
+      transition.classList.add('is-active');
+      setTimeout(() => {
+        appliquer();
+        setTimeout(() => transition.classList.remove('is-active'), 260);
+      }, 360);
+    }
+
+    document.querySelectorAll('[data-sector]').forEach((lien) => {
+      lien.addEventListener('click', () => afficherSecteur(lien.dataset.sector));
+    });
+
+    const secteurInitial = window.location.hash.replace('#', '');
+    if (['regles-cite', 'regles-serveur', 'histoire', 'discord'].includes(secteurInitial)) {
+      afficherSecteur(secteurInitial, false);
+    } else {
+      afficherSecteur('accueil', false);
+    }
+
+    const messagesDispatch = [
+      'Citoyen localisé — secteur C17 stable.',
+      'Inspection civile en cours — coopération recommandée.',
+      'Rationnement actif — présentez votre carte CID.',
+      'Patrouilles Métropolice signalées en Plaza.',
+      'Communication du secteur — restez attentif aux directives.',
+      'Niveau de surveillance élevé — déplacement enregistré.'
+    ];
+
+    let indexMessage = 0;
+    setInterval(() => {
+      const message = document.getElementById('dispatchMessage');
+      if (!message) return;
+      indexMessage = (indexMessage + 1) % messagesDispatch.length;
+      message.style.opacity = '0';
+      setTimeout(() => {
+        message.textContent = messagesDispatch[indexMessage];
+        message.style.opacity = '1';
+      }, 220);
+    }, 6500);
+
+    const elementsAReveler = document.querySelectorAll('.section, .panel, .law-card, .timeline-card, .discord-card');
+    elementsAReveler.forEach((element) => element.classList.add('reveal-on-scroll'));
+
+    const observateur = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observateur.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    elementsAReveler.forEach((element) => observateur.observe(element));
+
+
+    const lienBoutique = 'https://onelife-rp.ovh/boutique/';
+    const boutiqueModal = document.getElementById('boutiqueModal');
+
+    function ouvrirBoutiqueModal() {
+      if (!boutiqueModal) return;
+      boutiqueModal.classList.add('is-active');
+      boutiqueModal.setAttribute('aria-hidden', 'false');
+    }
+
+    function fermerBoutiqueModal() {
+      if (!boutiqueModal) return;
+      boutiqueModal.classList.remove('is-active');
+      boutiqueModal.setAttribute('aria-hidden', 'true');
+    }
+
+    document.querySelectorAll('[data-boutique-open]').forEach((bouton) => {
+      bouton.addEventListener('click', ouvrirBoutiqueModal);
+    });
+
+    document.querySelectorAll('[data-boutique-close]').forEach((bouton) => {
+      bouton.addEventListener('click', fermerBoutiqueModal);
+    });
+
+    document.querySelectorAll('[data-boutique-confirm]').forEach((bouton) => {
+      bouton.addEventListener('click', () => {
+        window.open(lienBoutique, '_blank', 'noopener,noreferrer');
+        fermerBoutiqueModal();
+      });
+    });
+
+    if (boutiqueModal) {
+      boutiqueModal.addEventListener('click', (event) => {
+        if (event.target === boutiqueModal) fermerBoutiqueModal();
+      });
+    }
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') fermerBoutiqueModal();
     });
 
     function copyIP() {
